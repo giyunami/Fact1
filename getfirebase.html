@@ -13,12 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>  
-    <button type="submit" id="submit">Submit</button>
+<body style="background-image:url(./img/magicschool.jpg); background-repeat: no-repeat; background-size:cover; width: 100%; height: auto;">
+    <button type="submit" id="submit">View Data</button>
     <div class="container d-flex justify-content-left">
         <div class="row col-sm-10">
             <table class="table table-dark table-responsive">
-                <th>No</th>
+                <th>Username</th>
                 <th>Fullname</th>
                 <th>Email</th>
                 <th>Password</th>
@@ -42,34 +42,33 @@
 </html>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-  import { getDatabase, ref, set, get, child, remove, update } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-   
-  // Paste the code from Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyA8qcYzLTPKOslpJd0wMVv66x1HJ91waA4",
-    authDomain: "fact1-de77a.firebaseapp.com",
-    databaseURL: "https://fact1-de77a-default-rtdb.firebaseio.com",
-    projectId: "fact1-de77a",
-    storageBucket: "fact1-de77a.appspot.com",
-    messagingSenderId: "122266299915",
-    appId: "1:122266299915:web:c48ae48b556d3565e3e10e"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-   
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getDatabase, ref, set, get, child, remove, update } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+     
+    // Paste the code from Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8qcYzLTPKOslpJd0wMVv66x1HJ91waA4",
+      authDomain: "fact1-de77a.firebaseapp.com",
+      databaseURL: "https://fact1-de77a-default-rtdb.firebaseio.com",
+      projectId: "fact1-de77a",
+      storageBucket: "fact1-de77a.appspot.com",
+      messagingSenderId: "122266299915",
+      appId: "1:122266299915:web:c48ae48b556d3565e3e10e"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
   // Get a reference to the database service
   const db = getDatabase(app);
 
     $( "#mybtn" ).click(function() {
         
-        const taskRef = ref(db, "users/"+ $("#t9").val());
+        const taskRef = ref(db, "users/"+ $("#t1").val());
 
         get(taskRef).then((snapshot) => {
         if (snapshot.exists()) {
-            $("#t1").val(snapshot.val().studno);
+            $("#t1").val(snapshot.val().username);
             $("#t2").val(snapshot.val().name);
             $("#t3").val(snapshot.val().email);
             $("#t4").val(snapshot.val().password);
@@ -105,33 +104,31 @@
             snapshot.forEach(function(data){
                 var val = data.val();
                 content +='<tr>';
-                content += '<td>' + val.studno + '</td>';
+                content += '<td>' + val.username + '</td>';
                 content += '<td>' + val.name + '</td>';
                 content += '<td>' + val.email + '</td>';
                 content += '<td>' + val.password + '</td>';
                 content += '<td>' + val.average + '</td>';
                 content += '<td>' + val.awards + '</td>';
                 content += '<td>' + val.gender + '</td>';
-                content += '<td><button id="'+ val.studno +'" class="btn btn-warning" value="delete">Delete</button></td>', '<td><button id="'+ val.studno +'" class="btn btn-success" value="update">Update</button></td>';
-                content += '<td><button id="'+ val.studno +'" class="btn btn-success" value="update">Update</button></td>';
+                content += '<td><button id="'+ val.username +'" class="btn btn-warning" value="delete">Delete</button></td>';
+                content += '<td><button id="'+ val.username +'" class="btn btn-success" value="update">Update</button></td>';
                 content += '</tr>';
             });
 
             // Function to change the content of t2
                 function modifyText(event) {
-                    var studno=event.target.id;
+                    var username=event.target.id;
                     var ops=event.target.value; 
                     //var  event.target.value);
 
                     if (ops=="delete"){
-                        remove(ref(db, 'users/' + studno)); 
-                        //alert("Record has been removed."); 
+                        remove(ref(db, 'users/' + username)); 
+                        alert("Record has been removed."); 
                     }
 
                     if (ops=="update"){
                         update(ref(db, 'users/' + studno),{
-                            email: 'mine@gmail.com',
-                            message: 'From update', 
                         });
                         //alert('updated');  
                     }
