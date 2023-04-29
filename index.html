@@ -11,23 +11,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <title>My Final Activity 1</title>
   </head>
-<body style="background-image:url(./img/magicschool.jpg); background-repeat: no-repeat; background-size:cover; width: 100%; height: auto;">
+<body style="background-image:url(./img/magical.jpg); background-repeat: no-repeat; background-size:cover; width: 100%; height: auto;">
     <style>
+
      nav {
     flex: 1;
-    padding-left: 450px;
+    text-align: center;
+    font-size: 50px;
 }
 nav ul li {
     display: inline-block;
     list-style: none;
     margin: 0 15px;
+    font-size: 50px;
 }
 nav ul li a {
     text-decoration: none;
     color: #fff;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
 }
         
@@ -49,7 +52,7 @@ nav ul li a {
         </ul>
       </nav>
     
-    <h1 style="text-align: center; color: rgb(9, 40, 0);">Nonchalant Scholarship Program</h1>
+    <h1 style="text-align: center; color: rgb(255, 255, 255);">NONCHALANT Scholarship Program</h1>
     <form method="post" id="frmContact" style="margin: auto; width: 220px;background-image: url(./img/forest.jpg); text-align: center;">
         <p>
             Fullname: <input type="text" name="fullname" id="fullname" required />
@@ -79,10 +82,9 @@ nav ul li a {
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+  import { getDatabase, ref, set, get, child, remove, update } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
    
   // Paste the code from Firebase
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyA8qcYzLTPKOslpJd0wMVv66x1HJ91waA4",
     authDomain: "fact1-de77a.firebaseapp.com",
@@ -92,7 +94,6 @@ nav ul li a {
     messagingSenderId: "122266299915",
     appId: "1:122266299915:web:c48ae48b556d3565e3e10e"
   };
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
    
@@ -101,7 +102,9 @@ nav ul li a {
    
   document.getElementById('frmContact').addEventListener('submit', function(e) {
       e.preventDefault();
-      set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+      const Studid=Math.random().toString(36).slice(2, 7);
+      set(ref(db, 'users/' + Studid ), {
+          username: Studid,
           name: document.getElementById('fullname').value,
           email: document.getElementById('email').value,
           password: document.getElementById('password').value,
