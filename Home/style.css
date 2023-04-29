@@ -6,7 +6,7 @@
 .container {
     height: 100vh;
     width: 100%;
-    background-image: url(/img/magicschool.jpg);
+    background-image: url(/img/nonchalant.jpg);
     background-position: center;
     background-size: cover;
     padding-right: 3%;
@@ -37,7 +37,7 @@ nav ul li {
 }
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #00032c;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-size: 15px;
@@ -99,19 +99,19 @@ nav ul li a {
     line-height: 1.5em;
     letter-spacing: .1em;
     font-size: 35px;
-    color: #000000;
-    background: linear-gradient(#ffffff, #0afb02);
+    color: #ffffff;
+    background: linear-gradient(#140148, #053af8);
 }
 .content .text h1 span {
     font-size: 50px;
-    color: rgb(47, 215, 0);
+    color: rgb(17, 64, 219);
 }
 .content .text p {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: .1em;
-    margin-top: 40px;
-    color: #e7e3e3;
+    margin-top: 15px;
+    color: #ffffff;
  }
 .btn3 {
     background: linear-gradient(to bottom, #cbcbcb 2%, #fff 100%);
